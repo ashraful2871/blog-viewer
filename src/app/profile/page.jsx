@@ -14,10 +14,8 @@ const ProfilePage = () => {
 
     if (!isLoading) {
       if (!isAuthenticated) {
-        console.log("Redirecting to login...");
         router.push("api/auth/login");
       } else {
-        console.log("User authenticated:", getUser());
         setAuthResolved(true);
       }
     }
