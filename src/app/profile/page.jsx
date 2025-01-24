@@ -28,9 +28,14 @@ const ProfilePage = () => {
   }
 
   return (
-    <div>
-      <h1>Welcome to your profile!</h1>
-      <p>Hello, {getUser()?.given_name || "User"}!</p>
+    <div className="text-center my-12 space-y-5">
+      <h1 className="text-2xl font-bold text-blue-500">
+        Welcome to your profile!
+      </h1>
+      <p className="text-xl font-semibold">
+        Hello,{" "}
+        <span className="text-blue-400">{getUser()?.given_name || "User"}</span>
+      </p>
     </div>
   );
 };

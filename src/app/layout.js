@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
   return (
     <KindeProvider>
       <html lang="en">
-        <body className="container mx-auto">
+        <body className="max-w-[1320px] mx-auto p-3 my-2">
           <Navbar></Navbar>
           <div className="min-h-screen"> {children}</div>
         </body>

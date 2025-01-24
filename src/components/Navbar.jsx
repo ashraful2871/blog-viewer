@@ -9,10 +9,10 @@ const Navbar = () => {
 
   const links = (
     <>
-      <li>
+      <li className="text-xl font-semibold">
         <Link href="/">Home</Link>
       </li>
-      <li>
+      <li className="text-xl font-semibold">
         <Link href="/profile">Profile</Link>
       </li>
     </>
@@ -45,9 +45,9 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a href="/" className=" text-xl font-bold">
+        <Link href="/" className=" text-xl font-bold text-blue-500">
           Blog Viewer
-        </a>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
@@ -56,16 +56,19 @@ const Navbar = () => {
       <div className="navbar-end">
         {isAuthenticated ? (
           <>
-            <span>{user?.given_name}</span>
             <Link href="/api/auth/logout">
               {" "}
-              <button className="btn">Sign Out</button>
+              <button className="btn btn-primary text-base font-bold bg-blue-500 hover:bg-blue-600 text-white">
+                Sign Out
+              </button>
             </Link>
           </>
         ) : (
           <Link href="/api/auth/login">
             {" "}
-            <button className="btn">Login</button>
+            <button className="btn btn-primary text-base font-bold bg-blue-500 hover:bg-blue-600 text-white">
+              Login
+            </button>
           </Link>
         )}
       </div>
