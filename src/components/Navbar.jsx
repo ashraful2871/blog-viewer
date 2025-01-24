@@ -1,27 +1,23 @@
-"use server";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+"use client";
+import { useKindeAuth } from "@kinde-oss/kinde-auth-nextjs";
 import Link from "next/link";
 import React from "react";
 
-const Navbar = async () => {
-  const { getUser } = getKindeServerSession();
-  const user = await getUser();
-  console.log(user);
+const Navbar = () => {
+  const { getUser, isAuthenticated, login, logout } = useKindeAuth();
+  const user = getUser();
+
   const links = (
     <>
-      {" "}
       <li>
         <Link href="/">Home</Link>
       </li>
-      {user && (
-        <>
-          <li>
-            <Link href="/profile">Profile</Link>
-          </li>
-        </>
-      )}
+      <li>
+        <Link href="/profile">Profile</Link>
+      </li>
     </>
   );
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -49,27 +45,28 @@ const Navbar = async () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <a href="/" className=" text-xl font-bold">
+          Blog Viewer
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
 
       <div className="navbar-end">
-        {user ? (
+        {isAuthenticated ? (
           <>
-            {" "}
             <span>{user?.given_name}</span>
             <Link href="/api/auth/logout">
-              <button className="btn">sign out</button>
+              {" "}
+              <button className="btn">Sign Out</button>
             </Link>
           </>
         ) : (
-          <>
-            <Link href="/api/auth/login">
-              <button className="btn">Login</button>
-            </Link>
-          </>
+          <Link href="/api/auth/login">
+            {" "}
+            <button className="btn">Login</button>
+          </Link>
         )}
       </div>
     </div>
