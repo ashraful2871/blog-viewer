@@ -5,7 +5,7 @@ const page = async () => {
   const data = await res.json();
   // console.log(data);
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
       {data.map((post) => (
         <PostCard key={post.id} post={post}></PostCard>
       ))}
